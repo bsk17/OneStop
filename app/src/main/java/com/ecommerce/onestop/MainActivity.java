@@ -1,3 +1,4 @@
+// this activity will allow user to choose to join or login
 package com.ecommerce.onestop;
 
 import android.app.ProgressDialog;

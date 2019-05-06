@@ -1,3 +1,4 @@
+// this activity will allow the user to login
 package com.ecommerce.onestop;
 
 import android.app.ProgressDialog;

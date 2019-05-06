@@ -1,3 +1,4 @@
+// this activity will show the admin all the categories in which he can add
 package com.ecommerce.onestop;
 
 import android.content.Intent;

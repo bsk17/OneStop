@@ -1,3 +1,4 @@
+// this activity will allow the user to register
 package com.ecommerce.onestop;
 
 import android.app.ProgressDialog;

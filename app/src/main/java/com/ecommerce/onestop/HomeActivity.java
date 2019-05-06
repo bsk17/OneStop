@@ -1,3 +1,4 @@
+// after the user login this will the home page
 package com.ecommerce.onestop;
 
 import android.content.Intent;
