@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "624421013099",
+    "firebase_url": "https://onestop-171098.firebaseio.com",
+    "project_id": "onestop-171098",
+    "storage_bucket": "onestop-171098.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:624421013099:android:a7dd57bbf6d3512f",
+        "android_client_info": {
+          "package_name": "com.ecommerce.onestop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "624421013099-m0ovoui8rbhlb5r2902r5k3mbgnktjib.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ecommerce.onestop",
+            "certificate_hash": "07dc1cf9707ee632379517c3ff2c4ff6a838dccf"
+          }
+        },
+        {
+          "client_id": "624421013099-u25j1ehaemgcoklbkumeed99sd54m9o3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoZF2PjYcxxPkOU7s2oytW14dyvHtqAac"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "624421013099-u25j1ehaemgcoklbkumeed99sd54m9o3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
