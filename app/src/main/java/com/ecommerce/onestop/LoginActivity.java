@@ -152,6 +152,9 @@ public class LoginActivity extends AppCompatActivity {
 
                                // send the user to home activity
                                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+
+                               // we send th user name to User class so that it can be used to display
+                               Prevalent.currentOnlineUser = userData;
                                startActivity(intent);
                            }
                         }

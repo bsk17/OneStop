@@ -13,8 +13,8 @@
         android:layout_width="300dp"
         android:layout_height="100dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp"
-        android:src="@drawable/applogo"/>
+        android:layout_marginTop="50dp"
+        android:src="@drawable/logosmall"/>
 
     <TextView
         android:id="@+id/app_slogan"

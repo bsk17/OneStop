@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/register"
+    android:background="@drawable/regsiter_1"
     tools:context=".RegisterActivity">
 
     <ImageView
@@ -13,7 +13,7 @@
         android:layout_height="100dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="250dp"
-        android:src="@drawable/applogo"/>
+        android:src="@drawable/logosmall"/>
 
     <EditText
         android:id="@+id/register_username_input"
@@ -26,8 +26,8 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:hint="Your Username"
-        android:textColor="@color/colorPrimaryDark"
-        android:textColorHint="@color/colorPrimaryDark"
+        android:textColor="#ffffff"
+        android:textColorHint="#ffffff"
         android:textSize="16sp"
         android:textStyle="bold"/>
 
@@ -43,8 +43,8 @@
         android:layout_marginRight="16dp"
         android:hint="Your Phone Number"
         android:inputType="number"
-        android:textColor="@color/colorPrimaryDark"
-        android:textColorHint="@color/colorPrimaryDark"
+        android:textColor="#ffffff"
+        android:textColorHint="#ffffff"
         android:textSize="16sp"
         android:textStyle="bold"/>
 
@@ -60,8 +60,8 @@
         android:layout_marginTop="6dp"
         android:hint="Your Password"
         android:inputType="textPassword"
-        android:textColor="@color/colorPrimaryDark"
-        android:textColorHint="@color/colorPrimaryDark"
+        android:textColor="#ffffff"
+        android:textColorHint="#ffffff"
         android:textSize="16sp"
         android:textStyle="bold"/>
 

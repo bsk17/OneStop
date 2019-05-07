@@ -7,9 +7,8 @@ import com.ecommerce.onestop.Model.Users;
 
 public class Prevalent {
 
-    private static Users currentOnlineUser;
-
     // we declare public because these variables are used by other class
+    public static Users currentOnlineUser;
     public static final String UserPhoneKey = "UserPhone";
     public static final String UserPasswordKey = "UserPassword";
 }
