@@ -79,6 +79,9 @@ public class HomeActivity extends AppCompatActivity
         // receiving the name from the User class
         userNametextView.setText(Prevalent.currentOnlineUser.getName());
 
+        // setting the image in profile photo
+        Picasso.get().load(Prevalent.currentOnlineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
+
 
         recyclerView = findViewById(R.id.recycler_menu);
         recyclerView.setHasFixedSize(true);
@@ -159,18 +162,27 @@ public class HomeActivity extends AppCompatActivity
 
         if (id == R.id.nav_cart) {
 
-        } else if (id == R.id.nav_orders) {
+        }
+        else if (id == R.id.nav_orders) {
 
-        } else if (id == R.id.nav_categories) {
+        }
+        else if (id == R.id.nav_categories) {
 
-        } else if (id == R.id.nav_settings) {
+        }
+        else if (id == R.id.nav_settings) {
 
-        } else if (id == R.id.nav_logout) {
+            Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);
+            startActivity(intent);
+
+        }
+        else if (id == R.id.nav_logout) {
+
             Paper.book().destroy();
             Intent intent = new Intent(HomeActivity.this, MainActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             finish();
+
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

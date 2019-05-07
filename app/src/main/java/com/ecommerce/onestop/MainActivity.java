@@ -92,6 +92,10 @@ public class MainActivity extends AppCompatActivity {
 
                             // send the user to home activity
                             Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+
+                            // we send the details to the currentOnlineUser so that we can use remember me function
+                            Prevalent.currentOnlineUser = userData;
+
                             startActivity(intent);
                         }
                     }
