@@ -99,13 +99,23 @@ public class HomeActivity extends AppCompatActivity
         FirebaseRecyclerAdapter<Product, ProductViewHolder> adapter =
                 new FirebaseRecyclerAdapter<Product, ProductViewHolder>(options) {
                     @Override
-                    protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull Product model) {
+                    protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull final Product model) {
                         holder.txtProductName.setText(model.getNmae());
                         holder.txtProductDescription.setText(model.getDescription());
                         holder.txtProductPrice.setText("Price = Rs "+model.getPrice());
 
                         // we will use picasso library from github to download images from DB
                         Picasso.get().load(model.getImage()).into(holder.imageView);
+
+                        // function when product is clicked it should also pass some details for next activity
+                        holder.itemView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Intent intent = new Intent(HomeActivity.this, ProductDetailsActivity.class);
+                                intent.putExtra("pid",model.getPid());
+                                startActivity(intent);
+                            }
+                        });
                     }
 
                     @NonNull
