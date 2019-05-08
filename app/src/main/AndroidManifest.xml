@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.ecommerce.onestop">
 
@@ -9,14 +8,16 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
-        tools:replace="android:icon,android:theme"
         android:allowBackup="true"
         android:icon="@drawable/logosmall"
         android:label="@string/app_name"
         android:roundIcon="@drawable/logosmall"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".ProductDetailsActivity"></activity>
+        android:theme="@style/AppTheme"
+        tools:replace="android:icon,android:theme">
+        <activity android:name=".ConfirmOrderActivity"></activity>
+        <activity android:name=".CartActivity" />
+        <activity android:name=".ProductDetailsActivity" />
         <activity android:name=".SettingsActivity" />
         <activity android:name=".SplashActivity">
             <intent-filter>
