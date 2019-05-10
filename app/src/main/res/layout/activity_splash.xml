@@ -8,12 +8,19 @@
     android:background="@drawable/splash_backgorund"
     tools:context=".SplashActivity">
 
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/logosmall"/>
+
 
     <pl.droidsonroids.gif.GifImageView
         android:layout_width="172dp"
         android:layout_height="126dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="65dp"
         android:src="@drawable/cart_loading"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

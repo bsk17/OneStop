@@ -89,7 +89,6 @@
         android:layout_marginRight="16dp"
         android:layout_below="@id/linear_layout_1"
         android:background="@drawable/buttons"
-        android:padding="20dp"
         android:textAllCaps="false"
         android:textSize="18sp"
         android:layout_centerHorizontal="true"

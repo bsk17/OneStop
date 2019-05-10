@@ -5,7 +5,10 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+
+import io.paperdb.Paper;
 
 public class AdminCategoryActivity extends AppCompatActivity {
 
@@ -13,10 +16,13 @@ public class AdminCategoryActivity extends AppCompatActivity {
     private ImageView glasses, hatCaps, walletsBagsPurses, shoes;
     private ImageView headPhonesHandFree, laptops, watches, mobilePhones;
 
+    private Button LogoutBtn, CheckOrderBtn, MaintainProductsBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_category);
+
 
         // initializing views
         tShirts = findViewById(R.id.t_shirts);
@@ -33,6 +39,41 @@ public class AdminCategoryActivity extends AppCompatActivity {
         laptops = findViewById(R.id.laptop_pc);
         watches = findViewById(R.id.watches);
         mobilePhones = findViewById(R.id.mobilephones);
+
+        // initializing buttons
+        LogoutBtn = findViewById(R.id.admin_logout_btn);
+        CheckOrderBtn = findViewById(R.id.check_orders_btn);
+        MaintainProductsBtn = findViewById(R.id.maintain_products_btn);
+
+        // maintain button function
+        MaintainProductsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AdminCategoryActivity.this, HomeActivity.class);
+                intent.putExtra("Admin", "Admin");
+                startActivity(intent);
+            }
+        });
+
+        // Logout btn function
+        LogoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AdminCategoryActivity.this, MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        // CheckOrderButton function
+        CheckOrderBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AdminCategoryActivity.this, AdminNewOrdersActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
         // we pass the string with each click to access DB

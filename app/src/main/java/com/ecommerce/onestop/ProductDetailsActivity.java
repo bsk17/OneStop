@@ -36,7 +36,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
     private TextView productPrice, productDescription, productName;
 
     // this will hold the pid sent from previous activity
-    private String productId = "";
+    private String productId = "", state = "Normal";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,9 +59,25 @@ public class ProductDetailsActivity extends AppCompatActivity {
         addToCartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addingToCartList();
+                if (state.equals("Order Placed") || state.equals("Order Shipped")){
+                    Toast.makeText(ProductDetailsActivity.this,
+                            "This is a prototype, you can purchase more order once your order is confirmed by the admin.",
+                            Toast.LENGTH_LONG).show();
+                }
+
+                // once the admin checks out the order status then product can be added to cart
+                else {
+                    addingToCartList();
+                }
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        checkOrderState();
     }
 
     // function to add the product to user cart
@@ -129,9 +145,36 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
                     // receiving the details from Product class to our variables
                     productName.setText(product.getNmae());
-                    productPrice.setText("Rs "+product.getPrice());
+                    productPrice.setText(product.getPrice());
                     productDescription.setText(product.getDescription());
                     Picasso.get().load(product.getImage()).into(productImage);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void checkOrderState(){
+        DatabaseReference ordersRef;
+        ordersRef = FirebaseDatabase.getInstance().getReference().child("Orders")
+                .child(Prevalent.currentOnlineUser.getPhone());
+
+        ordersRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()){
+                    String statusOfOrder = dataSnapshot.child("statusOfOrder").getValue().toString();
+
+                    if (statusOfOrder.equals("Shipped")){
+                        state = "Order Shipped";
+                    }
+                    else if (statusOfOrder.equals("Not Shipped")){
+                        state = "Order Placed";
+                    }
                 }
             }
 

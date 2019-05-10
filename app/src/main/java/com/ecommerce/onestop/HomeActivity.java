@@ -40,6 +40,8 @@ public class HomeActivity extends AppCompatActivity
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
 
+    private String type = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +49,11 @@ public class HomeActivity extends AppCompatActivity
 
         Paper.init(this);
 
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        if (bundle != null){
+            type = getIntent().getExtras().get("Admin").toString();
+        }
 
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
 
@@ -58,8 +65,13 @@ public class HomeActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(HomeActivity.this, CartActivity.class);
-                startActivity(intent);
+
+                // only the customer can use the feature
+                if (!type.equals("Admin")){
+                    Intent intent = new Intent(HomeActivity.this, CartActivity.class);
+                    startActivity(intent);
+                }
+
             }
         });
 
@@ -76,11 +88,13 @@ public class HomeActivity extends AppCompatActivity
         TextView userNametextView = headerView.findViewById(R.id.user_profile_name);
         CircleImageView profileImageView = headerView.findViewById(R.id.user_profile_image);
 
-        // receiving the name from the User class
-        userNametextView.setText(Prevalent.currentOnlineUser.getName());
+        if (! type.equals("Admin")){
+            // receiving the name from the User class
+            userNametextView.setText(Prevalent.currentOnlineUser.getName());
 
-        // setting the image in profile photo
-        Picasso.get().load(Prevalent.currentOnlineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
+            // setting the image in profile photo
+            Picasso.get().load(Prevalent.currentOnlineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
+        }
 
 
         recyclerView = findViewById(R.id.recycler_menu);
@@ -107,13 +121,24 @@ public class HomeActivity extends AppCompatActivity
                         // we will use picasso library from github to download images from DB
                         Picasso.get().load(model.getImage()).into(holder.imageView);
 
+
+
                         // function when product is clicked it should also pass some details for next activity
                         holder.itemView.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                Intent intent = new Intent(HomeActivity.this, ProductDetailsActivity.class);
-                                intent.putExtra("pid",model.getPid());
-                                startActivity(intent);
+                                // if it is an admin then he can edit the product
+                                if (type.equals("Admin")){
+                                    Intent intent = new Intent(HomeActivity.this, AdminMaintainProductsActivity.class);
+                                    intent.putExtra("pid",model.getPid());
+                                    startActivity(intent);
+                                }
+                                // if a user is operating
+                                else {
+                                    Intent intent = new Intent(HomeActivity.this, ProductDetailsActivity.class);
+                                    intent.putExtra("pid",model.getPid());
+                                    startActivity(intent);
+                                }
                             }
                         });
                     }
@@ -171,10 +196,20 @@ public class HomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_cart) {
-            Intent intent = new Intent(HomeActivity.this, CartActivity.class);
-            startActivity(intent);
+
+            // only the customer can use the feature
+            if (!type.equals("Admin")){
+                Intent intent = new Intent(HomeActivity.this, CartActivity.class);
+                startActivity(intent);
+            }
+
         }
-        else if (id == R.id.nav_orders) {
+        else if (id == R.id.nav_search) {
+
+            if (!type.equals("Admin")){
+                Intent intent = new Intent(HomeActivity.this, SearchProductsActivity.class);
+                startActivity(intent);
+            }
 
         }
         else if (id == R.id.nav_categories) {
@@ -182,17 +217,21 @@ public class HomeActivity extends AppCompatActivity
         }
         else if (id == R.id.nav_settings) {
 
-            Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);
-            startActivity(intent);
+            if (!type.equals("Admin")){
+                Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);
+                startActivity(intent);
+            }
 
         }
         else if (id == R.id.nav_logout) {
 
-            Paper.book().destroy();
-            Intent intent = new Intent(HomeActivity.this, MainActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
-            finish();
+            if (!type.equals("Admin")){
+                Paper.book().destroy();
+                Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
+            }
 
         }
 

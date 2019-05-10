@@ -128,9 +128,56 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:src="@drawable/mobiles"
-            android:layout_marginStart="16dp"/>
+            android:layout_marginStart="16dp"
+            />
 
+    </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/linear4_button_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        android:layout_marginBottom="8dp">
+
+        <Button
+            android:id="@+id/maintain_products_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/buttons"
+            android:textColor="#ffffff"
+            android:text="Maintain Products"
+            android:textAllCaps="false"
+            android:layout_weight="1"
+            android:layout_margin="8dp"
+            android:textSize="18sp"
+            />
+
+        <Button
+            android:id="@+id/check_orders_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/buttons"
+            android:textColor="#ffffff"
+            android:text="Check  orders"
+            android:textAllCaps="false"
+            android:layout_weight="1"
+            android:layout_margin="8dp"
+            android:textSize="18sp"
+             />
+
+        <Button
+            android:layout_weight="1"
+            android:id="@+id/admin_logout_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/buttons"
+            android:textColor="#ffffff"
+            android:textAllCaps="false"
+            android:text="Logout"
+            android:layout_margin="8dp"
+            android:textSize="18sp"/>
 
     </LinearLayout>
 
